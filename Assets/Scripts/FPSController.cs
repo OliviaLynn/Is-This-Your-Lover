@@ -17,6 +17,7 @@ namespace FirstPerson
 			public float JumpForce = 30f;
 			public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
 			[HideInInspector] public float CurrentTargetSpeed = 8f;
+			public float FlyForce = 10.0f;
 
 			public void UpdateDesiredTargetSpeed(Vector2 input)
 			{
@@ -88,13 +89,47 @@ namespace FirstPerson
 		}
 
 
+		public bool IsFlying = true;
+
+
 		private void Update()
 		{
 			RotateView();
 
-			if (Input.GetKeyDown("space") && !m_Jump)
+			// Jump control
+			if (Input.GetKeyDown("space") && !m_Jump && !IsFlying)
 			{
 				m_Jump = true;
+			}
+
+			// Toggle flight
+			if (Input.GetKeyDown(KeyCode.F))
+            {
+				if (IsFlying)
+                {
+					IsFlying = false;
+					m_RigidBody.useGravity = true;
+				}
+				else
+                {
+					IsFlying = true;
+					m_RigidBody.useGravity = false;
+					m_RigidBody.AddForce(Vector3.up * movementSettings.FlyForce , ForceMode.Impulse);
+				}
+            }
+			
+			// Flying up/down control
+			if (IsFlying)
+			{
+				m_RigidBody.drag = 5f; // todo remove drag when stop flying
+				if (Input.GetKey("space"))
+				{
+					m_RigidBody.AddForce(Vector3.up * movementSettings.FlyForce * 0.01f, ForceMode.Impulse);
+				}
+				if (Input.GetKey(KeyCode.LeftControl))
+				{
+					m_RigidBody.AddForce(Vector3.down * movementSettings.FlyForce * 0.01f, ForceMode.Impulse);
+				}
 			}
 		}
 
@@ -103,7 +138,7 @@ namespace FirstPerson
 			GroundCheck();
 			Vector2 input = GetInput();
 
-			if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
+			if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded || IsFlying))
 			{
 				// always move along the camera forward as it is the direction that it being aimed at
 				Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
@@ -119,32 +154,36 @@ namespace FirstPerson
 				}
 			}
 
-			if (m_IsGrounded)
+			if (!IsFlying)
 			{
-				m_RigidBody.drag = 5f;
+				if (m_IsGrounded)
+				{
+					m_RigidBody.drag = 5f;
 
-				if (m_Jump)
+					if (m_Jump)
+					{
+						m_RigidBody.drag = 0f;
+						m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
+						m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
+						m_Jumping = true;
+					}
+
+					if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
+					{
+						m_RigidBody.Sleep();
+					}
+				}
+				else
 				{
 					m_RigidBody.drag = 0f;
-					m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
-					m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
-					m_Jumping = true;
+					if (m_PreviouslyGrounded && !m_Jumping)
+					{
+						StickToGroundHelper();
+					}
 				}
+				m_Jump = false;
+			}
 
-				if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
-				{
-					m_RigidBody.Sleep();
-				}
-			}
-			else
-			{
-				m_RigidBody.drag = 0f;
-				if (m_PreviouslyGrounded && !m_Jumping)
-				{
-					StickToGroundHelper();
-				}
-			}
-			m_Jump = false;
 		}
 
 		private float SlopeMultiplier()
@@ -155,14 +194,17 @@ namespace FirstPerson
 
 		private void StickToGroundHelper()
 		{
-			RaycastHit hitInfo;
-			if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
-								   ((m_Capsule.height / 2f) - m_Capsule.radius) +
-								   advancedSettings.stickToGroundHelperDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+			if (!IsFlying)
 			{
-				if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f)
+				RaycastHit hitInfo;
+				if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
+									   ((m_Capsule.height / 2f) - m_Capsule.radius) +
+									   advancedSettings.stickToGroundHelperDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 				{
-					m_RigidBody.velocity = Vector3.ProjectOnPlane(m_RigidBody.velocity, hitInfo.normal);
+					if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f)
+					{
+						m_RigidBody.velocity = Vector3.ProjectOnPlane(m_RigidBody.velocity, hitInfo.normal);
+					}
 				}
 			}
 		}
@@ -170,9 +212,9 @@ namespace FirstPerson
 		private Vector2 GetInput()
 		{
 
-			Vector2 input = new Vector2
+			Vector3 input = new Vector2
 			{
-				x = Input.GetAxis("Horizontal"), ///TODO check
+				x = Input.GetAxis("Horizontal"), 
 				y = Input.GetAxis("Vertical")
 			};
 			movementSettings.UpdateDesiredTargetSpeed(input);
@@ -200,23 +242,24 @@ namespace FirstPerson
 		/// sphere cast down just beyond the bottom of the capsule to see if the capsule is colliding round the bottom
 		private void GroundCheck()
 		{
-			m_PreviouslyGrounded = m_IsGrounded;
-			RaycastHit hitInfo;
-			if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
-								   ((m_Capsule.height / 2f) - m_Capsule.radius) + advancedSettings.groundCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-			{
-				m_IsGrounded = true;
-				m_GroundContactNormal = hitInfo.normal;
+				m_PreviouslyGrounded = m_IsGrounded;
+				RaycastHit hitInfo;
+				if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
+									   ((m_Capsule.height / 2f) - m_Capsule.radius) + advancedSettings.groundCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+				{
+					m_IsGrounded = true;
+					m_GroundContactNormal = hitInfo.normal;
+				}
+				else
+				{
+					m_IsGrounded = false;
+					m_GroundContactNormal = Vector3.up;
+				}
+				if (!m_PreviouslyGrounded && m_IsGrounded && m_Jumping)
+				{
+					m_Jumping = false;
 			}
-			else
-			{
-				m_IsGrounded = false;
-				m_GroundContactNormal = Vector3.up;
-			}
-			if (!m_PreviouslyGrounded && m_IsGrounded && m_Jumping)
-			{
-				m_Jumping = false;
-			}
+
 		}
 	}
 }
