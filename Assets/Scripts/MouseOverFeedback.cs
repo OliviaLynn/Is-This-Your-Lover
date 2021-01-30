@@ -17,7 +17,7 @@ public class MouseOverFeedback : MonoBehaviour
     {
         if (!IsMouseOn)
         {
-            if (player.GetComponent<PickUpObject>().pickUpRange >= Vector3.Distance(player.transform.position, transform.position)) {
+            if (player.GetComponent<InteractWithObjects>().pickUpRange >= Vector3.Distance(player.transform.position, transform.position)) {
                 IsMouseOn = true;
                 transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 1.5f, ForceMode.Impulse);
             }
