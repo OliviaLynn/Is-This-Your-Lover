@@ -65,12 +65,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BobUpAndDown.cs" />
+    <Compile Include="Assets\Scripts\CustomerInteractions.cs" />
     <Compile Include="Assets\Scripts\DoYeet.cs" />
     <Compile Include="Assets\Scripts\FPSController.cs" />
+    <Compile Include="Assets\Scripts\InteractWithObjects.cs" />
+    <Compile Include="Assets\Scripts\LoverData.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\MouseOverFeedback.cs" />
-    <Compile Include="Assets\Scripts\PickUpObject.cs" />
     <Compile Include="Assets\Scripts\SceneFader.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Art\UI\Fonts\Assistant\OFL.txt" />
