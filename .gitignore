@@ -1,5 +1,6 @@
 
 Packages/packages-lock.json
+Library/*
 Library/SourceAssetDB-lock
 Library/SourceAssetDB
 Library/shadercompiler-UnityShaderCompiler.exe9.log
