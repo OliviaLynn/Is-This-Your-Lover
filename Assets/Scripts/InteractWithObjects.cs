@@ -7,7 +7,7 @@ public class InteractWithObjects : MonoBehaviour
 
     public GameObject m_camera;
     [Tooltip("The object all our items are nested under in the Hiearchy Panel")]
-    public GameObject defaultItemParent; // we could set this in start() to be whatever is initially the parent, but, eh
+    public GameObject parentObjectOfPossibleLovers; // we could set this in start() to be whatever is initially the parent, but, eh
 
     private GameObject heldObject;
 
@@ -19,9 +19,7 @@ public class InteractWithObjects : MonoBehaviour
         {
             if (heldObject != null)
             {
-                heldObject.transform.SetParent(defaultItemParent.transform);
-                heldObject.gameObject.AddComponent<Rigidbody>();
-                heldObject = null;
+                DropHeldObject();
             }
             else
             {
@@ -47,4 +45,14 @@ public class InteractWithObjects : MonoBehaviour
 
         }
     }
+     public void DropHeldObject() // called by portal, in case we're still holding the item
+     { 
+        if (heldObject != null)
+        {
+            heldObject.transform.SetParent(parentObjectOfPossibleLovers.transform);
+            heldObject.gameObject.AddComponent<Rigidbody>();
+            heldObject = null;
+        }
+
+     }
 }
