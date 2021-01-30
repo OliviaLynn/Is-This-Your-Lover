@@ -1,6 +1,6 @@
 
 Packages/packages-lock.json
-*/Library/*
+[Ll]ibrary/
 Library/SourceAssetDB-lock
 Library/SourceAssetDB
 Library/shadercompiler-UnityShaderCompiler.exe9.log
@@ -3945,3 +3945,5 @@ Library/Artifacts/06/06c7ed24caa8235e88cdbebb34077d60
 Library/Artifacts/05/05ca7b2460dc3c1ebb540c09542a0cbe
 Library/Artifacts/02/02404b18c9d40fc349301d1542d96e88
 Library/ArtifactDB
+Library/ArtifactDB
+Library/PackageCache/com.unity.collab-proxy@1.2.16/.npmignore
