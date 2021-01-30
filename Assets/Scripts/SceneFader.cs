@@ -13,6 +13,21 @@ public class SceneFader : MonoBehaviour
     public Image fadeOutImage;
     public float fadeSpeed = 1.0f;
 
+
+    public AudioSource audioSource;
+    public AudioClip buttonClick;
+    public AudioClip startGameSound;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void playClickSound()
+    {
+        audioSource.PlayOneShot(buttonClick);
+    }
+
     public enum FadeDirection
     {
         In, //Alpha = 1
@@ -62,6 +77,7 @@ public class SceneFader : MonoBehaviour
     public void PlayNewGame()
     {
         Debug.Log("Start fade");
+        audioSource.PlayOneShot(startGameSound);
         StartCoroutine(FadeAndLoadScene(FadeDirection.In, "Demo"));
     }
 
@@ -70,7 +86,8 @@ public class SceneFader : MonoBehaviour
         Debug.Log("In coroutine");
         yield return Fade(fadeDirection);
         Debug.Log("About to load new scene");
-        SceneManager.LoadScene(sceneToLoad);
+        //SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void SetColorImage(ref float alpha, FadeDirection fadeDirection)
