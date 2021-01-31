@@ -18,6 +18,10 @@ public class CustomerInteractions : MonoBehaviour
     public GameObject LosePanel;
     public GameObject WinPanel;
 
+    public GameObject DoorChimes;
+    public GameObject WinAudio;
+    public GameObject LoseAudio;
+
     enum TaskStage
     {
         Hello,
@@ -38,6 +42,7 @@ public class CustomerInteractions : MonoBehaviour
     void Start()
     {
         // start a timer for when the first person starts screaming
+        DoorChimes.GetComponent<AudioSource>().Play(0);
     }
 
     void Update()
@@ -70,12 +75,14 @@ public class CustomerInteractions : MonoBehaviour
                 HideThanksDiaogue();
                 currentStage = TaskStage.Hello;
                 // TODO timer to trigger door chime/screams
+                DoorChimes.GetComponent<AudioSource>().Play(0);
             }
             else if (currentStage == TaskStage.Failure)
             {
                 HideFailureDiaogue();
                 currentStage = TaskStage.Hello;
                 // TODO timer to trigger door chime/screams
+                DoorChimes.GetComponent<AudioSource>().Play(0);
             }
             else if (currentStage == TaskStage.GameWin)
             {
@@ -115,6 +122,7 @@ public class CustomerInteractions : MonoBehaviour
         HideHelloDialogue();
         GiveUpBox.SetActive(false);
 
+        LoseAudio.GetComponent<AudioSource>().Play(0);
         LosePanel.SetActive(true);
     }
 
@@ -127,12 +135,13 @@ public class CustomerInteractions : MonoBehaviour
         HideCurrentClue();
         HideHelloDialogue();
 
+        WinAudio.GetComponent<AudioSource>().Play(0);
         WinPanel.SetActive(true);
-
     }
 
     public void ReceiveClick() // when the door gets clicked, called from Player.InteractWithObjects
     {
+        DoorChimes.GetComponent<AudioSource>().Stop();
         if (currentStage == TaskStage.Hello)
         {
             ShowHelloDialogue();
