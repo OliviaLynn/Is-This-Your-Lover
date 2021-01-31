@@ -6,6 +6,7 @@ public class HeartsManager : MonoBehaviour
 {
     private int brokenHeartHalves = 0;
     private int brokenHeartHalvesMax = 10;
+    public GameObject BrokenHeartContainer;
 
     private int happyHearts = 0;
     private int happyHeartsMax = 5;
@@ -15,7 +16,7 @@ public class HeartsManager : MonoBehaviour
     {
         brokenHeartHalves += amount;
         Debug.Log("Broken Hearts Halves: " + brokenHeartHalves.ToString());
-        // todo update ui
+        UpdateBrokenHeartContainer();
 
         if (brokenHeartHalves >= brokenHeartHalvesMax)
         {
@@ -34,6 +35,42 @@ public class HeartsManager : MonoBehaviour
         {
             Debug.Log("Congrats, you won!");
             // todo handle
+        }
+    }
+    private void UpdateBrokenHeartContainer()
+    {
+        switch (brokenHeartHalves)
+        {
+            case 1:
+                BrokenHeartContainer.transform.Find("HeartH1").gameObject.SetActive(true);
+                break;
+            case 2:
+                BrokenHeartContainer.transform.Find("Heart1").gameObject.SetActive(true);
+                break;
+            case 3:
+                BrokenHeartContainer.transform.Find("HeartH2").gameObject.SetActive(true);
+                break;
+            case 4:
+                BrokenHeartContainer.transform.Find("Heart2").gameObject.SetActive(true);
+                break;
+            case 5:
+                BrokenHeartContainer.transform.Find("HeartH3").gameObject.SetActive(true);
+                break;
+            case 6:
+                BrokenHeartContainer.transform.Find("Heart3").gameObject.SetActive(true);
+                break;
+            case 7:
+                BrokenHeartContainer.transform.Find("HeartH4").gameObject.SetActive(true);
+                break;
+            case 8:
+                BrokenHeartContainer.transform.Find("Heart4").gameObject.SetActive(true);
+                break;
+            case 9:
+                BrokenHeartContainer.transform.Find("HeartH5").gameObject.SetActive(true);
+                break;
+            case 10:
+                BrokenHeartContainer.transform.Find("Heart5").gameObject.SetActive(true);
+                break;
         }
     }
     private void UpdateHeartContainer()

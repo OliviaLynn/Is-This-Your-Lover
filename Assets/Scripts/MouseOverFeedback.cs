@@ -22,7 +22,10 @@ public class MouseOverFeedback : MonoBehaviour
                 onCooldown = true;
                 isMouseOn = true;
                 Invoke("EndCooldown", 1);
-                transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 1.75f, ForceMode.Impulse);
+                if (transform.GetComponent<Rigidbody>() != null)
+                {
+                    transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 1.75f, ForceMode.Impulse);
+                }
             }
         }
     }

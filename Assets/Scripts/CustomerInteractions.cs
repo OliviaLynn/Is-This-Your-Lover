@@ -58,7 +58,6 @@ public class CustomerInteractions : MonoBehaviour
             else if (currentStage == TaskStage.GiveUp)
             {
                 HideGiveUpDialogue();
-                HeartsManager.GetComponent<HeartsManager>().AddBrokenHeartHalves(1);
                 currentStage = TaskStage.Hello;
             }
             else if (currentStage == TaskStage.Thanks)
@@ -80,6 +79,7 @@ public class CustomerInteractions : MonoBehaviour
             {
                 HideCurrentClue();
                 currentStage = TaskStage.GiveUp;
+                HeartsManager.GetComponent<HeartsManager>().AddBrokenHeartHalves(1);
                 ShowGiveUpDialogue();
             }
         }
@@ -134,7 +134,7 @@ public class CustomerInteractions : MonoBehaviour
 
     private void GoToNextClue()
     {
-        Debug.Log(currentStage);
+        //Debug.Log(currentStage);
         if (currentStage == TaskStage.Hello)
         {
             // We've agreed to help, show first clue

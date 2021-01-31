@@ -168,7 +168,6 @@ namespace FirstPerson
 				desiredMove.x = desiredMove.x * movementSettings.CurrentTargetSpeed;
 				desiredMove.z = desiredMove.z * movementSettings.CurrentTargetSpeed;
 				desiredMove.y = desiredMove.y * movementSettings.CurrentTargetSpeed;
-				Debug.Log(desiredMove);
 				if (m_RigidBody.velocity.sqrMagnitude <
 					(movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed))
 				{
