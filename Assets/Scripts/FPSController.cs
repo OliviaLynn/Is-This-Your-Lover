@@ -92,10 +92,29 @@ namespace FirstPerson
 
 		public bool IsFlying = false;
 
+		private float haltPlayerAfterTime = 1;
+		private float timeOfInactivityBeforeHaltingPlayer = 3.0f;
 
 		private void Update()
 		{
 			RotateView();
+
+			if (Input.anyKey)
+            {
+				// Reset our timer for when to halt an inactive player (to fix the weird drift)
+				haltPlayerAfterTime = Time.time + timeOfInactivityBeforeHaltingPlayer;				
+			}
+
+			//Debug.Log(Time.time);
+			//Debug.Log("Halt at: " + Mathf.FloorToInt(haltPlayerAfterTime)+ "   |   Time: " + Mathf.FloorToInt(Time.time));
+			if (Time.time > haltPlayerAfterTime)
+			{
+				// if we've been inactive for millisOfInactivityBeforeHaltingPlayer, we want to halt the player (to avoid weird drift)
+				haltPlayerAfterTime = Time.time + timeOfInactivityBeforeHaltingPlayer; //reset the timer
+				Debug.Log("player halt!");
+				GetComponent<Rigidbody>().velocity = Vector3.zero;
+			}
+
 
 			// Jump control
 			if (Input.GetKeyDown("space") && !m_Jump && !IsFlying)
@@ -181,7 +200,7 @@ namespace FirstPerson
 					m_RigidBody.drag = 1.0f;
 					if (m_PreviouslyGrounded && !m_Jumping)
 					{
-						StickToGroundHelper();
+						//StickToGroundHelper();
 					}
 				}
 				m_Jump = false;
@@ -197,6 +216,7 @@ namespace FirstPerson
 
 		private void StickToGroundHelper()
 		{
+			Debug.Log("This shouldn't be called!!");
 			if (!IsFlying)
 			{
 				RaycastHit hitInfo;
@@ -215,7 +235,7 @@ namespace FirstPerson
 		private Vector2 GetInput()
 		{
 
-			Vector3 input = new Vector2
+			Vector2 input = new Vector2
 			{
 				x = Input.GetAxis("Horizontal"), 
 				y = Input.GetAxis("Vertical")

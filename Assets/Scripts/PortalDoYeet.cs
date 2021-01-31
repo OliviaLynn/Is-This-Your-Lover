@@ -23,7 +23,7 @@ public class PortalDoYeet : MonoBehaviour
         if (other.gameObject.tag == "PossibleLover" && !failedAttempts.Contains(other.gameObject))
         {
             int returnCode = Door.GetComponent<CustomerInteractions>().IsThisYourLover(other.gameObject);
-            Debug.Log(returnCode);
+            //Debug.Log(returnCode);
             if (returnCode == 1)
             {
                 Destroy(other.gameObject);
