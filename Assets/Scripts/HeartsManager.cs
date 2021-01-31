@@ -12,6 +12,8 @@ public class HeartsManager : MonoBehaviour
     private int happyHeartsMax = 5;
     public GameObject HeartContainer;
 
+    public GameObject CustomerInteractions;
+
     public void AddBrokenHeartHalves(int amount)
     {
         brokenHeartHalves += amount;
@@ -22,6 +24,7 @@ public class HeartsManager : MonoBehaviour
         {
             Debug.Log("Aww, you lost!");
             // todo handle
+            CustomerInteractions.GetComponent<CustomerInteractions>().LoseWholeGame();
         }
     }
 
@@ -35,6 +38,7 @@ public class HeartsManager : MonoBehaviour
         {
             Debug.Log("Congrats, you won!");
             // todo handle
+            CustomerInteractions.GetComponent<CustomerInteractions>().WinWholeGame();
         }
     }
     private void UpdateBrokenHeartContainer()

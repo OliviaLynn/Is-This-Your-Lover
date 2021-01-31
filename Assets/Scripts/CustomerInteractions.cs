@@ -15,6 +15,9 @@ public class CustomerInteractions : MonoBehaviour
     public GameObject ThanksBox;
     public GameObject FailureBox;
 
+    public GameObject LosePanel;
+    public GameObject WinPanel;
+
     enum TaskStage
     {
         Hello,
@@ -25,7 +28,9 @@ public class CustomerInteractions : MonoBehaviour
         Clue3,
         Thanks,
         GiveUp,
-        Failure
+        Failure,
+        GameWin,
+        GameLose
     }
     private TaskStage currentStage = TaskStage.Hello;
     private GameObject currentNeededItem;
@@ -72,6 +77,15 @@ public class CustomerInteractions : MonoBehaviour
                 currentStage = TaskStage.Hello;
                 // TODO timer to trigger door chime/screams
             }
+            else if (currentStage == TaskStage.GameWin)
+            {
+                // TODO to main menu after game win
+
+            }
+            else if (currentStage == TaskStage.GameLose)
+            {
+                // TODO to main menu after game lose
+            }
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -83,9 +97,39 @@ public class CustomerInteractions : MonoBehaviour
                 ShowGiveUpDialogue();
             }
         }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            HeartsManager.GetComponent<HeartsManager>().AddAHappyHeart();
+        }
     }
 
     // ------------- Called by other scripts:
+
+    public void LoseWholeGame()
+    {
+        HideFailureDiaogue();
+        HideThanksDiaogue();
+        HideGiveUpDialogue();
+        HideThatsNotThem();
+        HideCurrentClue();
+        HideHelloDialogue();
+        GiveUpBox.SetActive(false);
+
+        LosePanel.SetActive(true);
+    }
+
+    public void WinWholeGame()
+    {
+        HideFailureDiaogue();
+        HideThanksDiaogue();
+        HideGiveUpDialogue();
+        HideThatsNotThem();
+        HideCurrentClue();
+        HideHelloDialogue();
+
+        WinPanel.SetActive(true);
+
+    }
 
     public void ReceiveClick() // when the door gets clicked, called from Player.InteractWithObjects
     {
