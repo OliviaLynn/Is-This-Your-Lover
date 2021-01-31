@@ -3,6 +3,8 @@ using System.Collections;
 
 public class InteractWithObjects : MonoBehaviour
 {
+    public GameObject CustomerInteractionManager;
+
     public float pickUpRange = 5.0f;
 
     public GameObject m_camera;
@@ -36,9 +38,9 @@ public class InteractWithObjects : MonoBehaviour
                             heldObject = hit.collider.gameObject;
                         }
                     }
-                    if (hit.collider.gameObject.name == "Door")
+                    if (hit.collider.gameObject.tag == "Door")
                     {
-                        hit.collider.gameObject.GetComponent<CustomerInteractions>().ReceiveClick();
+                        CustomerInteractionManager.GetComponent<CustomerInteractions>().ReceiveClick();
                     }
                 }
             }
