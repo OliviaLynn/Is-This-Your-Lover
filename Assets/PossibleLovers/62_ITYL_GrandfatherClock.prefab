@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: b48e51e90ba1c1847ba8ced9847b71d5, type: 3}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4618724294190489516}
   m_Layer: 0
   m_Name: 62_ITYL_GrandfatherClock
-  m_TagString: Untagged
+  m_TagString: PossibleLover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5537290742331728633}
-  m_LocalRotation: {x: -0, y: 0.14532207, z: -0, w: 0.9893844}
+  m_LocalRotation: {x: 0, y: 0.14532325, z: 0, w: 0.98938423}
   m_LocalPosition: {x: -3.277, y: 4.39, z: -10.904}
   m_LocalScale: {x: 37.937, y: 37.937, z: 37.937}
   m_Children:
@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40ce9469b44a61478b5c294a747bf5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TheyAlwaysLiked: wood.
-  TheyAlwaysWere: a bit older.
-  TheyAlwaysSaid: '"Take your time."'
+  TheyAlwaysLiked: to run out of time.
+  TheyAlwaysWere: running out of time.
+  TheyAlwaysSaid: '"Oh no, I ran out of time."'
 --- !u!114 &4618724294190489516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: b48e51e90ba1c1847ba8ced9847b71d5, type: 3}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
