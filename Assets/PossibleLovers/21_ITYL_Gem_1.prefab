@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3515421793784220123}
   - component: {fileID: 3515421793784220120}
   - component: {fileID: -3292024419964322073}
-  - component: {fileID: 1148128262465037126}
+  - component: {fileID: 8288238140423297956}
   m_Layer: 0
   m_Name: 21_ITYL_Gem_1
   m_TagString: PossibleLover
@@ -127,8 +127,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1148128262465037126
-BoxCollider:
+--- !u!64 &8288238140423297956
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,6 +137,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.027601158, y: 0.01799849, z: 0.023903307}
-  m_Center: {x: 0, y: 0.0010007541, z: -4.656613e-10}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5076798556035486163, guid: 166c914f52fa0764f81f4c6c7fcaec4e, type: 3}
