@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOutImage: {fileID: 1345547232}
-  fadeSpeed: 1.2
+  fadeSpeed: 2
   audioSource: {fileID: 0}
   buttonClick: {fileID: 8300000, guid: 1fa721ef7a59aa641a48e3998ed05418, type: 3}
   startGameSound: {fileID: 8300000, guid: da4dc9b7b701fb14cbff9905b9e974ca, type: 3}
@@ -1556,7 +1556,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

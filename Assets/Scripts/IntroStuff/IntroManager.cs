@@ -58,6 +58,7 @@ public class IntroManager : MonoBehaviour
 
     void EndIntro()
     {
+        audio.clip = null;
         canvas.GetComponent<SceneFader>().PlayNewGame();
         Debug.Log("End of intro");
     }
