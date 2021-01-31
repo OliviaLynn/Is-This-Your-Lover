@@ -106,7 +106,7 @@ public class CustomerInteractions : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            HeartsManager.GetComponent<HeartsManager>().AddAHappyHeart();
+            //HeartsManager.GetComponent<HeartsManager>().AddAHappyHeart();
         }
     }
 
