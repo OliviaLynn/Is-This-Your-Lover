@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4122978501443554582}
   - component: {fileID: 2127595801011591421}
   - component: {fileID: 2127595801011591422}
-  - component: {fileID: -3733742363898209306}
   - component: {fileID: -4796303077650209758}
+  - component: {fileID: 636338437920923475}
   m_Layer: 0
   m_Name: 7_ITYL_Beaker_1
   m_TagString: PossibleLover
@@ -111,20 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
---- !u!64 &-3733742363898209306
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2465509047482330307}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5076798556035486163, guid: 283bd00f1b556e742822f371b1c26717, type: 3}
 --- !u!54 &-4796303077650209758
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,3 +127,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &636338437920923475
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465509047482330307}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.021412263, y: 0.01888777, z: 0.020000003}
+  m_Center: {x: -0.0007061292, y: -0.0005561146, z: -0.000000001862645}

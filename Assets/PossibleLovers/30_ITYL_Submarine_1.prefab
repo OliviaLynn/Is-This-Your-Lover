@@ -483,10 +483,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9056603803992703876}
-  - component: {fileID: 3649353427633684372}
   - component: {fileID: 3649353427633684461}
   - component: {fileID: 3649353427633684462}
   - component: {fileID: 7435284774345382948}
+  - component: {fileID: 4033100672826493745}
   m_Layer: 0
   m_Name: 30_ITYL_Submarine_1
   m_TagString: PossibleLover
@@ -515,20 +515,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!64 &3649353427633684372
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8567066406303013182}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &3649353427633684461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +559,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &4033100672826493745
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567066406303013182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.04
+  m_Height: 0.19
+  m_Direction: 0
+  m_Center: {x: 0, y: -0.04, z: 0}
 --- !u!1 &9048512148229934396
 GameObject:
   m_ObjectHideFlags: 0

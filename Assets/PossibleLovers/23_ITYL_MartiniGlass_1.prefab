@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1842952295619651005}
   - component: {fileID: 3331714624267053592}
   - component: {fileID: 709413172644781778}
-  - component: {fileID: 6069228857085456970}
   - component: {fileID: 6069228857085456937}
   - component: {fileID: 6069228857085456938}
   - component: {fileID: 6035029249477585700}
+  - component: {fileID: 6258153433767883989}
   m_Layer: 0
   m_Name: 23_ITYL_MartiniGlass_1
   m_TagString: PossibleLover
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358024359307263751}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20.222218, y: 20.222218, z: 20.222218}
   m_Children: []
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6069228857085456970
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358024359307263751}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5076798556035486163, guid: 9aafcd165ab151c458f4e685dfce5d1d, type: 3}
 --- !u!114 &6069228857085456937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +127,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6258153433767883989
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358024359307263751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017771473, y: 0.018105661, z: 0.017771477}
+  m_Center: {x: 9.313225e-10, y: -0.0023310764, z: -0.0000000023283062}

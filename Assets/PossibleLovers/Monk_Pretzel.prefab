@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 528126327232015086}
   - component: {fileID: 3529576970889012555}
   - component: {fileID: 1666161180649836929}
-  - component: {fileID: 6921144637366048514}
   - component: {fileID: 6921144637366048632}
   - component: {fileID: 6921144637366048639}
   - component: {fileID: 7418695673552138529}
+  - component: {fileID: 243868321056276482}
   m_Layer: 0
   m_Name: Monk_Pretzel
   m_TagString: PossibleLover
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873584752291115092}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.7773, y: 1.7773, z: 1.7773}
   m_Children: []
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6921144637366048514
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873584752291115092}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1865056248366311061, guid: 0a0f219b9d736fa46b66b779a359e097, type: 3}
 --- !u!114 &6921144637366048632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +127,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &243868321056276482
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873584752291115092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1865056248366311061, guid: 0a0f219b9d736fa46b66b779a359e097, type: 3}
