@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5092348229621893543}
   - component: {fileID: 8143770542889813506}
   - component: {fileID: 6260156729417020104}
-  - component: {fileID: 2790932071466047920}
   - component: {fileID: 2790932071466047952}
   - component: {fileID: 2790932071466047967}
   - component: {fileID: -6289586341072298768}
+  - component: {fileID: 5093124498660073467}
   m_Layer: 0
   m_Name: 22_ITML_Knife_1
   m_TagString: PossibleLover
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5611616048882357021}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8.3344, y: 3.3507314, z: 6.8388004}
   m_Children: []
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2790932071466047920
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5611616048882357021}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7233159054065966114, guid: e58898ba6745aab4f8ba2c7948eae586, type: 3}
 --- !u!114 &2790932071466047952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +127,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5093124498660073467
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611616048882357021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015972795, y: 0.010613668, z: 0.07093248}
+  m_Center: {x: -0.0016262233, y: -4.656613e-10, z: 0.020791894}
