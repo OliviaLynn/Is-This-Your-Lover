@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CustomerInteractions : MonoBehaviour
 {
@@ -87,11 +88,13 @@ public class CustomerInteractions : MonoBehaviour
             else if (currentStage == TaskStage.GameWin)
             {
                 // TODO to main menu after game win
+                Debug.Log("I should be reloading now");
+                SceneManager.LoadScene(0);
 
             }
             else if (currentStage == TaskStage.GameLose)
             {
-                // TODO to main menu after game lose
+                SceneManager.LoadScene(0);
             }
         }
         if (Input.GetKeyDown(KeyCode.Q))
@@ -122,6 +125,8 @@ public class CustomerInteractions : MonoBehaviour
         HideHelloDialogue();
         GiveUpBox.SetActive(false);
 
+        currentStage = TaskStage.GameLose;
+
         LoseAudio.GetComponent<AudioSource>().Play(0);
         LosePanel.SetActive(true);
     }
@@ -134,6 +139,8 @@ public class CustomerInteractions : MonoBehaviour
         HideThatsNotThem();
         HideCurrentClue();
         HideHelloDialogue();
+
+        currentStage = TaskStage.GameWin;
 
         WinAudio.GetComponent<AudioSource>().Play(0);
         WinPanel.SetActive(true);
