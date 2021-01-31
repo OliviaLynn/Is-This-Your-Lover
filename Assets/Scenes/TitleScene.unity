@@ -1193,6 +1193,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1461662962}
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7b58eb8f1c8373e49abfe903cda2af65,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &928249131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,7 +2113,7 @@ MonoBehaviour:
   fadeSpeed: 1.2
   audioSource: {fileID: 0}
   buttonClick: {fileID: 8300000, guid: 1fa721ef7a59aa641a48e3998ed05418, type: 3}
-  startGameSound: {fileID: 8300000, guid: da4dc9b7b701fb14cbff9905b9e974ca, type: 3}
+  startGameSound: {fileID: 8300000, guid: 1fa721ef7a59aa641a48e3998ed05418, type: 3}
 --- !u!82 &1461662962
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2114,7 +2126,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.241
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2619,7 +2631,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fa62b993fd49fac4a9803d3663fb1d31, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.233
   m_Pitch: 1
   Loop: 1
   Mute: 0
