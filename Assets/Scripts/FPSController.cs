@@ -18,6 +18,7 @@ namespace FirstPerson
 			public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
 			[HideInInspector] public float CurrentTargetSpeed = 8f;
 			public float FlyForce = 10.0f;
+			public float StandardDrag = 5.0f;
 
 			public void UpdateDesiredTargetSpeed(Vector2 input)
 			{
@@ -89,7 +90,7 @@ namespace FirstPerson
 		}
 
 
-		public bool IsFlying = true;
+		public bool IsFlying = false;
 
 
 		private void Update()
@@ -109,19 +110,21 @@ namespace FirstPerson
                 {
 					IsFlying = false;
 					m_RigidBody.useGravity = true;
+					m_RigidBody.drag = movementSettings.StandardDrag;
 				}
 				else
                 {
 					IsFlying = true;
 					m_RigidBody.useGravity = false;
-					m_RigidBody.AddForce(Vector3.up * movementSettings.FlyForce , ForceMode.Impulse);
+					m_RigidBody.drag = movementSettings.StandardDrag;
+					m_RigidBody.AddForce(Vector3.up * movementSettings.FlyForce, ForceMode.Impulse);
 				}
             }
 			
 			// Flying up/down control
 			if (IsFlying)
 			{
-				m_RigidBody.drag = 5f; // todo remove drag when stop flying
+				//m_RigidBody.drag = movementSettings.StandardDrag;
 				if (Input.GetKey("space"))
 				{
 					m_RigidBody.AddForce(Vector3.up * movementSettings.FlyForce * 0.01f, ForceMode.Impulse);
@@ -158,11 +161,11 @@ namespace FirstPerson
 			{
 				if (m_IsGrounded)
 				{
-					m_RigidBody.drag = 5f;
+					m_RigidBody.drag = movementSettings.StandardDrag;
 
 					if (m_Jump)
 					{
-						m_RigidBody.drag = 0f;
+						m_RigidBody.drag = 1.0f;
 						m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
 						m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
 						m_Jumping = true;
@@ -175,7 +178,7 @@ namespace FirstPerson
 				}
 				else
 				{
-					m_RigidBody.drag = 0f;
+					m_RigidBody.drag = 1.0f;
 					if (m_PreviouslyGrounded && !m_Jumping)
 					{
 						StickToGroundHelper();
@@ -242,6 +245,7 @@ namespace FirstPerson
 		/// sphere cast down just beyond the bottom of the capsule to see if the capsule is colliding round the bottom
 		private void GroundCheck()
 		{
+			
 				m_PreviouslyGrounded = m_IsGrounded;
 				RaycastHit hitInfo;
 				if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo,
