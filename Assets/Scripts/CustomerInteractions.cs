@@ -105,8 +105,8 @@ public class CustomerInteractions : MonoBehaviour
     // ------------- Progress task:
     private void PickNewNeededItem()
     {
-        //currentNeededItem = PoolOfPossibleLovers.transform.GetChild(Random.Range(0, PoolOfPossibleLovers.transform.childCount)).gameObject;
-        currentNeededItem = PoolOfPossibleLovers.transform.GetChild(0).gameObject;
+        currentNeededItem = PoolOfPossibleLovers.transform.GetChild(Random.Range(0, PoolOfPossibleLovers.transform.childCount)).gameObject;
+        //currentNeededItem = PoolOfPossibleLovers.transform.GetChild(0).gameObject;
         //Debug.Log("I need a: " + currentNeededItem.name);
     }
 
