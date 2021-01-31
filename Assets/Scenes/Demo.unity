@@ -299,14 +299,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11170549}
-  m_LocalRotation: {x: 0, y: 0.39474386, z: 0, w: 0.91879123}
-  m_LocalPosition: {x: -4.07, y: 1, z: -2.27}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 46.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11170556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5806,6 +5806,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2115251224}
     m_Modifications:
+    - target: {fileID: 982041786213834928, guid: 17e89d192624271419d717eb69d83105,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1158337224197631784, guid: 17e89d192624271419d717eb69d83105,
         type: 3}
       propertyPath: m_RootOrder
@@ -17394,6 +17399,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 10_ITYL_TeddyBear_1
       objectReference: {fileID: 0}
+    - target: {fileID: 721753543647716656, guid: cd353aa3e515b0c438b3534cb035459e,
+        type: 3}
+      propertyPath: m_TagString
+      value: PossibleLover
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd353aa3e515b0c438b3534cb035459e, type: 3}
 --- !u!4 &543450652575289740 stripped
@@ -17431,6 +17441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 12_ITYL_Dragonair_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7357350455122297806, guid: 150edb3cae472a9469b1d8c8dd113f83,
+        type: 3}
+      propertyPath: m_TagString
+      value: PossibleLover
       objectReference: {fileID: 0}
     - target: {fileID: 7877182701591058804, guid: 150edb3cae472a9469b1d8c8dd113f83,
         type: 3}
@@ -17643,6 +17658,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 62_ITYL_GrandfatherClock
       objectReference: {fileID: 0}
+    - target: {fileID: 5537290742331728633, guid: 98255fb3cff3b4e48850dcc435c0b295,
+        type: 3}
+      propertyPath: m_TagString
+      value: PossibleLover
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98255fb3cff3b4e48850dcc435c0b295, type: 3}
 --- !u!1001 &5029179598357709538
@@ -17712,6 +17732,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 36_GuavaJuice
       objectReference: {fileID: 0}
+    - target: {fileID: 5263113548424568091, guid: 29ac08f48b8c98d43bb7c5ad868d52d5,
+        type: 3}
+      propertyPath: m_TagString
+      value: PossibleLover
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29ac08f48b8c98d43bb7c5ad868d52d5, type: 3}
 --- !u!1001 &5454618717267291508
@@ -17725,6 +17750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 38_ITYL_BirthdayCake_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626015597798099731, guid: 243ad0e5eb5896e4bb2eb4603d62ba63,
+        type: 3}
+      propertyPath: m_TagString
+      value: PossibleLover
       objectReference: {fileID: 0}
     - target: {fileID: 9006658120386892201, guid: 243ad0e5eb5896e4bb2eb4603d62ba63,
         type: 3}
@@ -17870,6 +17900,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3_ITYL_Cactus_2
       objectReference: {fileID: 0}
+    - target: {fileID: 6135104967948656450, guid: 150dee91204953c4b84b4cc6beff4570,
+        type: 3}
+      propertyPath: m_TagString
+      value: PossibleLover
+      objectReference: {fileID: 0}
     - target: {fileID: 6804822325664417272, guid: 150dee91204953c4b84b4cc6beff4570,
         type: 3}
       propertyPath: m_RootOrder
@@ -17938,6 +17973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 16_ITYL_Postcard_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395826878825694894, guid: 0f48c9dd2a0c8e5418069a4c5f5fc844,
+        type: 3}
+      propertyPath: m_TagString
+      value: PossibleLover
       objectReference: {fileID: 0}
     - target: {fileID: 7919740405078383636, guid: 0f48c9dd2a0c8e5418069a4c5f5fc844,
         type: 3}

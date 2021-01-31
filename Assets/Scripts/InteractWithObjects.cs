@@ -12,10 +12,15 @@ public class InteractWithObjects : MonoBehaviour
     public GameObject parentObjectOfPossibleLovers; // we could set this in start() to be whatever is initially the parent, but, eh
 
     private GameObject heldObject;
+    private Vector3 heldObjectOffset;
 
 
     void Update()
     {
+        if (heldObject != null)
+        {
+            heldObject.transform.position = m_camera.transform.position + m_camera.transform.forward * 2.0f;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,8 +39,11 @@ public class InteractWithObjects : MonoBehaviour
                         if (pickUpRange >= Vector3.Distance(hit.collider.transform.position, transform.position))
                         {
                             Destroy(hit.collider.gameObject.GetComponent<Rigidbody>());
-                            hit.collider.transform.SetParent(m_camera.transform);
+                            //hit.collider.transform.SetParent(m_camera.transform);
+
                             heldObject = hit.collider.gameObject;
+                            heldObjectOffset = heldObject.transform.position - m_camera.transform.position;
+                            Physics.IgnoreCollision(hit.collider, GetComponent<Collider>(), true); 
                         }
                     }
                     if (hit.collider.gameObject.tag == "Door")
@@ -51,8 +59,11 @@ public class InteractWithObjects : MonoBehaviour
      { 
         if (heldObject != null)
         {
-            heldObject.transform.SetParent(parentObjectOfPossibleLovers.transform);
+            //heldObject.transform.SetParent(parentObjectOfPossibleLovers.transform);
+            //todo stop syncing pos
+
             heldObject.gameObject.AddComponent<Rigidbody>();
+            Physics.IgnoreCollision(heldObject.GetComponent<Collider>(), GetComponent<Collider>(), false); //todo reset on drop
             heldObject = null;
         }
 

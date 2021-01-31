@@ -93,7 +93,7 @@ namespace FirstPerson
 		public bool IsFlying = false;
 
 		private float haltPlayerAfterTime = 1;
-		private float timeOfInactivityBeforeHaltingPlayer = 3.0f;
+		private float timeOfInactivityBeforeHaltingPlayer = 2.0f;
 
 		private void Update()
 		{
@@ -111,7 +111,6 @@ namespace FirstPerson
 			{
 				// if we've been inactive for millisOfInactivityBeforeHaltingPlayer, we want to halt the player (to avoid weird drift)
 				haltPlayerAfterTime = Time.time + timeOfInactivityBeforeHaltingPlayer; //reset the timer
-				Debug.Log("player halt!");
 				GetComponent<Rigidbody>().velocity = Vector3.zero;
 			}
 
@@ -169,6 +168,7 @@ namespace FirstPerson
 				desiredMove.x = desiredMove.x * movementSettings.CurrentTargetSpeed;
 				desiredMove.z = desiredMove.z * movementSettings.CurrentTargetSpeed;
 				desiredMove.y = desiredMove.y * movementSettings.CurrentTargetSpeed;
+				Debug.Log(desiredMove);
 				if (m_RigidBody.velocity.sqrMagnitude <
 					(movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed))
 				{
@@ -184,7 +184,7 @@ namespace FirstPerson
 
 					if (m_Jump)
 					{
-						m_RigidBody.drag = 1.0f;
+						//m_RigidBody.drag = 1.0f;
 						m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
 						m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
 						m_Jumping = true;
