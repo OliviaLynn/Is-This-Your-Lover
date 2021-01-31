@@ -18,8 +18,6 @@ public class CustomerInteractions : MonoBehaviour
     public GameObject LosePanel;
     public GameObject WinPanel;
 
-    public GameObject Doorbell;
-
     enum TaskStage
     {
         Hello,
@@ -39,7 +37,7 @@ public class CustomerInteractions : MonoBehaviour
 
     void Start()
     {
-        Doorbell.GetComponent<AudioSource>().Play(0);
+        // start a timer for when the first person starts screaming
     }
 
     void Update()
@@ -71,15 +69,13 @@ public class CustomerInteractions : MonoBehaviour
             {
                 HideThanksDiaogue();
                 currentStage = TaskStage.Hello;
-                // TODO door chimes
-                Doorbell.GetComponent<AudioSource>().Play(0);
+                // TODO timer to trigger door chime/screams
             }
             else if (currentStage == TaskStage.Failure)
             {
                 HideFailureDiaogue();
                 currentStage = TaskStage.Hello;
-                // TODO door chimes
-                Doorbell.GetComponent<AudioSource>().Play(0);
+                // TODO timer to trigger door chime/screams
             }
             else if (currentStage == TaskStage.GameWin)
             {
@@ -139,7 +135,6 @@ public class CustomerInteractions : MonoBehaviour
     {
         if (currentStage == TaskStage.Hello)
         {
-            Doorbell.GetComponent<AudioSource>().Stop();
             ShowHelloDialogue();
         }
         else if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
@@ -186,7 +181,6 @@ public class CustomerInteractions : MonoBehaviour
         //Debug.Log(currentStage);
         if (currentStage == TaskStage.Hello)
         {
-            Doorbell.GetComponent<AudioSource>().Stop();
             // We've agreed to help, show first clue
             // todo first time in between one
             currentStage = TaskStage.Clue1;

@@ -139,10 +139,10 @@ MonoBehaviour:
     y: 30
     width: 1616
     height: 957
-  m_MinSize: {x: 677, y: 492}
-  m_MaxSize: {x: 18001, y: 14042}
+  m_MinSize: {x: 678, y: 492}
+  m_MaxSize: {x: 18002, y: 14042}
   vertical: 0
-  controlID: 117
+  controlID: 16
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 1
-  controlID: 149
+  controlID: 112
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 221}
   m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 150
+  controlID: 113
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_MinSize: {x: 331, y: 271}
   m_MaxSize: {x: 14001, y: 10021}
   vertical: 0
-  controlID: 80
+  controlID: 23
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -315,8 +315,8 @@ MonoBehaviour:
     y: 0
     width: 441
     height: 957
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -444,9 +444,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 96470000
-      m_LastClickedID: 18326
-      m_ExpandedIDs: 76f4ffff88f4ffff7af5ffff5cfbffff
+      m_SelectedIDs: 5e600000
+      m_LastClickedID: 24670
+      m_ExpandedIDs: 8ae9ffffe0e9ffff6afbffff06360000ba5e00003461000084610000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -506,9 +506,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.1579134, y: 0.67257214, z: 0.41986704}
+    m_Target: {x: 387.0465, y: 217.92636, z: 10.960205}
     speed: 2
-    m_Value: {x: -2.1579134, y: 0.67257214, z: 0.41986704}
+    m_Value: {x: 387.0465, y: 217.92636, z: 10.960205}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -554,13 +554,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.20686336, y: -0.12087678, z: 0.02576536, w: -0.97054}
+    m_Target: {x: -0.047980495, y: -0.00839839, z: 0.00040445887, w: -0.9988202}
     speed: 2
-    m_Value: {x: -0.20686178, y: -0.12087586, z: 0.025765162, w: -0.9705326}
+    m_Value: {x: -0.047980145, y: -0.008398329, z: 0.00040445593, w: -0.9988129}
   m_Size:
-    m_Target: 2.8456385
+    m_Target: 265.7502
     speed: 2
-    m_Value: 2.8456385
+    m_Value: 265.7502
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -624,20 +624,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sound/SFX
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Sound/SFX
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Olivi\Documents\Unity\Is This Your Lover
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ae450000
-    m_LastClickedID: 17838
-    m_ExpandedIDs: 0000000090400000a040000000ca9a3b
+    m_SelectedIDs: 74400000
+    m_LastClickedID: 16500
+    m_ExpandedIDs: 00000000684000006c40000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -665,7 +665,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000090400000
+    m_ExpandedIDs: 0000000068400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
