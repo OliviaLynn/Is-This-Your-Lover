@@ -5,9 +5,13 @@ using UnityEngine;
 public class CustomerInteractions : MonoBehaviour
 {
     public GameObject PoolOfPossibleLovers;
+    public GameObject HeartsManager;
+    public GameObject Portal;
+
     public GameObject HelloBox;
     public GameObject RequestBox;
     public GameObject ThatsNotThemBox;
+    public GameObject GiveUpBox;
     public GameObject ThanksBox;
     public GameObject FailureBox;
 
@@ -20,6 +24,7 @@ public class CustomerInteractions : MonoBehaviour
         Clue2F,
         Clue3,
         Thanks,
+        GiveUp,
         Failure
     }
     private TaskStage currentStage = TaskStage.Hello;
@@ -38,6 +43,7 @@ public class CustomerInteractions : MonoBehaviour
             {
                 HideHelloDialogue();
                 PickNewNeededItem();
+                Portal.GetComponent<PortalDoYeet>().ResetFailedAttempts();
                 GoToNextClue();
             }
             else if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
@@ -48,6 +54,12 @@ public class CustomerInteractions : MonoBehaviour
             {
                 HideThatsNotThem();
                 GoToNextClue();
+            }
+            else if (currentStage == TaskStage.GiveUp)
+            {
+                HideGiveUpDialogue();
+                HeartsManager.GetComponent<HeartsManager>().AddBrokenHeartHalves(1);
+                currentStage = TaskStage.Hello;
             }
             else if (currentStage == TaskStage.Thanks)
             {
@@ -60,6 +72,15 @@ public class CustomerInteractions : MonoBehaviour
                 HideFailureDiaogue();
                 currentStage = TaskStage.Hello;
                 // TODO timer to trigger door chime/screams
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
+            {
+                HideCurrentClue();
+                currentStage = TaskStage.GiveUp;
+                ShowGiveUpDialogue();
             }
         }
     }
@@ -85,6 +106,7 @@ public class CustomerInteractions : MonoBehaviour
             if (possibleLover.name == currentNeededItem.name)
             {
                 currentStage = TaskStage.Thanks;
+                HeartsManager.GetComponent<HeartsManager>().AddAHappyHeart();
                 HideCurrentClue();
                 ShowThanksDialogue();
                 return 1; 
@@ -154,6 +176,7 @@ public class CustomerInteractions : MonoBehaviour
         {
             // Fail second clue, fail completely
             currentStage = TaskStage.Failure;
+            HeartsManager.GetComponent<HeartsManager>().AddBrokenHeartHalves(2);
             HideCurrentClue();
             ShowFailureDiaogue();
         }
@@ -184,6 +207,14 @@ public class CustomerInteractions : MonoBehaviour
     private void HideThatsNotThem()
     {
         ThatsNotThemBox.SetActive(false);
+    }
+    private void ShowGiveUpDialogue()
+    {
+        GiveUpBox.SetActive(true);
+    }
+    private void HideGiveUpDialogue()
+    {
+        GiveUpBox.SetActive(false);
     }
     private void ShowThanksDialogue()
     {

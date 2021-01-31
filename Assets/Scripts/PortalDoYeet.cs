@@ -28,7 +28,7 @@ public class PortalDoYeet : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 Particles.GetComponent<ParticleSystem>().Clear();
-                failedAttempts = new List<GameObject>();
+                //ResetFailedAttempts();
             }
             else if (returnCode == 0)
             {
@@ -36,6 +36,13 @@ public class PortalDoYeet : MonoBehaviour
                 RandomYeet(other.gameObject);
             }
         }
+    }
+
+    public void ResetFailedAttempts()
+    {
+        // to be called by the customer interaction manager
+        Debug.Log("Resetting failed attempts");
+        failedAttempts = new List<GameObject>();
     }
 
     private void RandomYeet(GameObject falseLover)
