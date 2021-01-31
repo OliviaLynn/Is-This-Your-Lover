@@ -5,24 +5,28 @@ using UnityEngine;
 public class CustomerInteractions : MonoBehaviour
 {
     public GameObject PoolOfPossibleLovers;
+    public GameObject HelloBox;
     public GameObject RequestBox;
+    public GameObject ThatsNotThemBox;
     public GameObject ThanksBox;
+    public GameObject FailureBox;
 
     enum TaskStage
     {
-        NeedNewTask,
+        Hello,
         Clue1,
+        Clue1F,
         Clue2,
+        Clue2F,
         Clue3,
         Thanks,
-        NoThanks
+        Failure
     }
-    private TaskStage currentStage = TaskStage.NeedNewTask;
+    private TaskStage currentStage = TaskStage.Hello;
     private GameObject currentNeededItem;
 
     void Start()
     {
-
         // start a timer for when the first person starts screaming
     }
 
@@ -30,34 +34,51 @@ public class CustomerInteractions : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
+            if (currentStage == TaskStage.Hello)
+            {
+                HideHelloDialogue();
+                PickNewNeededItem();
+                GoToNextClue();
+            }
+            else if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
             {
                 HideCurrentClue();
+            }
+            else if (currentStage == TaskStage.Clue1F || currentStage == TaskStage.Clue2F)
+            {
+                HideThatsNotThem();
+                GoToNextClue();
             }
             else if (currentStage == TaskStage.Thanks)
             {
                 HideThanksDiaogue();
-                // TODO timer to trigger next customer
+                currentStage = TaskStage.Hello;
+                // TODO timer to trigger door chime/screams
+            }
+            else if (currentStage == TaskStage.Failure)
+            {
+                HideFailureDiaogue();
+                currentStage = TaskStage.Hello;
+                // TODO timer to trigger door chime/screams
             }
         }
     }
 
     // ------------- Called by other scripts:
 
-    public void ReceiveClick()
+    public void ReceiveClick() // when the door gets clicked, called from Player.InteractWithObjects
     {
-        if (currentStage == TaskStage.NeedNewTask)
+        if (currentStage == TaskStage.Hello)
         {
-            PickNewNeededItem();
-            DisplayCurrentClue();
+            ShowHelloDialogue();
         }
-        if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
+        else if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
         {
-            DisplayCurrentClue();
+            ShowCurrentClue();
         }
     }
 
-    public int IsThisYourLover(GameObject possibleLover)
+    public int IsThisYourLover(GameObject possibleLover) // a check performed by Portal.PortalDoYeet
     {
         if (currentStage == TaskStage.Clue1 || currentStage == TaskStage.Clue2 || currentStage == TaskStage.Clue3)
         {
@@ -76,7 +97,7 @@ public class CustomerInteractions : MonoBehaviour
         }
         else
         {
-            // Not in a stage where checking something at the portal makes sense
+            // We're not in a stage where checking something at the portal makes sense
             return -1;
         }
     }
@@ -86,42 +107,83 @@ public class CustomerInteractions : MonoBehaviour
     {
         //currentNeededItem = PoolOfPossibleLovers.transform.GetChild(Random.Range(0, PoolOfPossibleLovers.transform.childCount)).gameObject;
         currentNeededItem = PoolOfPossibleLovers.transform.GetChild(0).gameObject;
-        Debug.Log("I need a: " + currentNeededItem.name);
-        currentStage = TaskStage.Clue1;
-        SetDialogueClueUI();
-        DisplayCurrentClue();
+        //Debug.Log("I need a: " + currentNeededItem.name);
     }
 
     private void GoToNextClue()
     {
-        if (currentStage == TaskStage.Clue1)
+        Debug.Log(currentStage);
+        if (currentStage == TaskStage.Hello)
         {
-            currentStage = TaskStage.Clue2;
+            // We've agreed to help, show first clue
+            // todo first time in between one
+            currentStage = TaskStage.Clue1;
             SetDialogueClueUI();
-            DisplayCurrentClue();
+            ShowCurrentClue();
+        }
+        else if (currentStage == TaskStage.Clue1)
+        {
+            // Fail first clue, show "That's not them!"
+            currentStage = TaskStage.Clue1F;
+            HideCurrentClue();
+            ShowThatsNotThem();
+        }
+        else if (currentStage == TaskStage.Clue1F)
+        {
+            // Continued from "That's not them," showing second clue:
+            currentStage = TaskStage.Clue2;
+            HideThatsNotThem();
+            SetDialogueClueUI();
+            ShowCurrentClue();
         }
         else if (currentStage == TaskStage.Clue2)
         {
+            // Fail second clue, show "That's not them!"
+            currentStage = TaskStage.Clue2F;
+            HideCurrentClue();
+            ShowThatsNotThem();
+        }
+        else if (currentStage == TaskStage.Clue2F)
+        {
+            // Continued from "That's not them," showing third clue:
             currentStage = TaskStage.Clue3;
             SetDialogueClueUI();
-            DisplayCurrentClue();
+            ShowCurrentClue();
         }
         else if (currentStage == TaskStage.Clue3)
         {
-            Debug.Log("That was your last clue!");
-            // TODO handle case!!
+            // Fail second clue, fail completely
+            currentStage = TaskStage.Failure;
+            HideCurrentClue();
+            ShowFailureDiaogue();
         }
     }
 
     // ------------- UI and Display:
 
-    private void DisplayCurrentClue()
+    private void ShowHelloDialogue()
+    {
+        HelloBox.SetActive(true);
+    }
+    private void HideHelloDialogue()
+    {
+        HelloBox.SetActive(false);
+    }
+    private void ShowCurrentClue()
     {
         RequestBox.SetActive(true);
     }
     private void HideCurrentClue()
     {
         RequestBox.SetActive(false);
+    }
+    private void ShowThatsNotThem()
+    {
+        ThatsNotThemBox.SetActive(true);
+    }
+    private void HideThatsNotThem()
+    {
+        ThatsNotThemBox.SetActive(false);
     }
     private void ShowThanksDialogue()
     {
@@ -130,6 +192,14 @@ public class CustomerInteractions : MonoBehaviour
     private void HideThanksDiaogue()
     {
         ThanksBox.SetActive(false);
+    }
+    private void ShowFailureDiaogue()
+    {
+        FailureBox.SetActive(true);
+    }
+    private void HideFailureDiaogue()
+    {
+        FailureBox.SetActive(false);
     }
 
     private void SetDialogueClueUI()

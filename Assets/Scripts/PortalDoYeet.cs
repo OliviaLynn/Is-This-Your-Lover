@@ -28,6 +28,7 @@ public class PortalDoYeet : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 Particles.GetComponent<ParticleSystem>().Clear();
+                failedAttempts = new List<GameObject>();
             }
             else if (returnCode == 0)
             {
@@ -39,7 +40,6 @@ public class PortalDoYeet : MonoBehaviour
 
     private void RandomYeet(GameObject falseLover)
     {
-        Debug.Log("Yeet!");
         Player.GetComponent<InteractWithObjects>().DropHeldObject();
         falseLover.GetComponent<Rigidbody>().AddForce(yeetForce * new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(0.75f, 1.0f), Random.Range(-1.0f, 1.0f)), ForceMode.Impulse);
     }

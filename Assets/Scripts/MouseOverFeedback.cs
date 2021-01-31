@@ -5,7 +5,8 @@ using UnityEngine;
 public class MouseOverFeedback : MonoBehaviour
 {
     public GameObject player;
-    private bool IsMouseOn = false;
+    private bool isMouseOn = false;
+    private bool onCooldown = false;
 
     void Start()
     {
@@ -15,17 +16,24 @@ public class MouseOverFeedback : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (!IsMouseOn)
+        if (!onCooldown && !isMouseOn)
         {
             if (player.GetComponent<InteractWithObjects>().pickUpRange >= Vector3.Distance(player.transform.position, transform.position)) {
-                IsMouseOn = true;
-                transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 1.5f, ForceMode.Impulse);
+                onCooldown = true;
+                isMouseOn = true;
+                Invoke("EndCooldown", 1);
+                transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 1.75f, ForceMode.Impulse);
             }
         }
     }
 
+    void EndCooldown()
+    {
+        onCooldown = false;
+    }
+
     void OnMouseExit()
     {
-        IsMouseOn = false;
+        isMouseOn = false;
     }
 }
