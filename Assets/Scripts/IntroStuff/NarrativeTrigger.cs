@@ -5,8 +5,8 @@ using UnityEngine;
 public class NarrativeTrigger : MonoBehaviour
 {
     public IntroDialogue intro;
-
-    private void OnEnable()
+    
+    private void Start()
     {
         TriggerDialogue();
     }
