@@ -87,18 +87,14 @@ public class CustomerInteractions : MonoBehaviour
         //currentNeededItem = PoolOfPossibleLovers.transform.GetChild(Random.Range(0, PoolOfPossibleLovers.transform.childCount)).gameObject;
         currentNeededItem = PoolOfPossibleLovers.transform.GetChild(0).gameObject;
         Debug.Log("I need a: " + currentNeededItem.name);
-        GoToNextClue();
+        currentStage = TaskStage.Clue1;
+        SetDialogueClueUI();
+        DisplayCurrentClue();
     }
 
     private void GoToNextClue()
     {
-        if (currentStage == TaskStage.NeedNewTask)
-        {
-            currentStage = TaskStage.Clue1;
-            SetDialogueClueUI();
-            DisplayCurrentClue();
-        }
-        else if (currentStage == TaskStage.Clue1)
+        if (currentStage == TaskStage.Clue1)
         {
             currentStage = TaskStage.Clue2;
             SetDialogueClueUI();
